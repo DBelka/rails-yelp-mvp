@@ -1,11 +1,35 @@
-<h1>Restaurants</h1>
+<h1 class="text-center">All Your Restaurants</h1>
+<!-- <div class="css-grid">
 
-<% @restaurants.each do |rest| %>
-    <br>
-  <p> <%= link_to rest.name, restaurant_path(rest)  %> </p>
-  <%= link_to "Delete", restaurant_path(rest),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
-  <br>
+</div> -->
 
-<% end %>
+<div class="container">
+  <div class="row">
+    <% @restaurants.each do |rest| %>
+      <div class="col-sm  col-lg-4 mb-3">
+        <div class="card" style="width: 18rem; height: 15rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to rest.name, restaurant_path(rest) %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"> <%= rest.address %> <%= rest.category %></h6>
+            <% rest.reviews.each do |review|%>
+            <p class="card-text"> <%= review.content %> <%= review.rating%></p>
+            <% end %>
+            <%= link_to "Add Review", new_restaurant_review_path(rest) %>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<!--
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div>
+</div> -->

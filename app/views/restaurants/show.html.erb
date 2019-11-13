@@ -1,14 +1,13 @@
-<h1><%= @restaurant.name %></h1>
-
-<ul>
-  <li><%= @restaurant.address %></li>
-  <li><%= @restaurant.category %></li>
-</ul>
-
-<ul>
-  <% @restaurant.reviews.each do |review| %>
-    <li><%= review.content %> - <%= review.rating %></li>
-  <% end %>
-</ul>
-
-<%= link_to "Add review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+<div class="d-flex justify-content-center align-items-center" height="500px">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= @restaurant.name %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= @restaurant.address %><%= @restaurant.category %></h6>
+      <% @restaurant.reviews.each do |review|  %>
+      <p class="card-text"><%= review.content %> - <%= review.rating %></p>
+      <%end %>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+</div>
